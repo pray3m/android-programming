@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -29,8 +30,23 @@ public class MainActivity extends AppCompatActivity {
 
                 String name = inputName.getText().toString();
                 intent.putExtra("name", name);
-                startActivity(intent);
+//                startActivity(intent);
+
+                // Get the data from the child activity
+                startActivityForResult(intent, 2);
             }
+
         });
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode,resultCode,data);
+
+        if(requestCode == 2 ) {
+            String name = data.getStringExtra("returnName");
+            TextView displayText = findViewById(R.id.displayText);
+            displayText.setText("Good luck CEO, " + name + " !");
+        }
+
     }
 }
