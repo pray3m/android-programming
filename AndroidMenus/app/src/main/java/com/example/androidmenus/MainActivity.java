@@ -1,6 +1,7 @@
 package com.example.androidmenus;
 
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -54,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 showPopupMenu(v);
             }
         });
+
+        // register context menu for view
+        Button buttonShowContextMenu = findViewById(R.id.buttonShowContextMenu);
+        registerForContextMenu(buttonShowContextMenu);
     }
 
     private void showPopupMenu(View view) {
@@ -80,4 +85,30 @@ public class MainActivity extends AppCompatActivity {
         });
         popupMenu.show();
     }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.context_edit) {
+            Toast.makeText(this, "Context Edit selected", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.context_delete) {
+            Toast.makeText(this, "Context Delete selected", Toast.LENGTH_SHORT).show();
+            return true;
+        } else if (id == R.id.context_share) {
+            Toast.makeText(this, "Context Share selected", Toast.LENGTH_SHORT).show();
+            return true;
+        } else {
+            return super.onContextItemSelected(item);
+        }
+    }
+
 }
