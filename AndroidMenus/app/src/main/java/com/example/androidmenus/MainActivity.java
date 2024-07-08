@@ -16,6 +16,25 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button buttonShowPopup = findViewById(R.id.buttonShowPopup);
+        buttonShowPopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showPopupMenu(v);
+            }
+        });
+
+        // register context menu for view
+        Button buttonShowContextMenu = findViewById(R.id.buttonShowContextMenu);
+        registerForContextMenu(buttonShowContextMenu);
+    }
+
+    /*================ OPTIONS MENU ==================== */
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_item, menu);
@@ -43,24 +62,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Button buttonShowPopup = findViewById(R.id.buttonShowPopup);
-        buttonShowPopup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showPopupMenu(v);
-            }
-        });
-
-        // register context menu for view
-        Button buttonShowContextMenu = findViewById(R.id.buttonShowContextMenu);
-        registerForContextMenu(buttonShowContextMenu);
-    }
-
+    /*================ POPUP MENU ==================== */
     private void showPopupMenu(View view) {
         PopupMenu popupMenu = new PopupMenu(this, view);
         MenuInflater inflater = popupMenu.getMenuInflater();
@@ -86,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
         popupMenu.show();
     }
 
+    /*================ CONTEXT MENU ==================== */
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
