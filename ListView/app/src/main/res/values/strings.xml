@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ListView</string>
+    <string-array name="array_technology">
+        <item>Java</item>
+        <item>C#</item>
+        <item>C++</item>
+        <item>PHP</item>
+        <item>Python</item>
+        <item>JavaScript</item>
+        <item>Ruby</item>
+        <item>Swift</item>
+        <item>Kotlin</item>
+        <item>Go</item>
+        <item>Rust</item>
+        <item>TypeScript</item>
+        <item>Objective-C</item>
+        <item>Swift</item>
+        <item>Scala</item>
+    </string-array>
+</resources>
