@@ -1,8 +1,9 @@
 package com.example.recyclerview;
 
 public class Contact {
-    private int imageResId;
-    private String name, phone;
+    private final int imageResId;
+    private final String name;
+    private final String phone;
 
     public Contact(String name, String phone, int imageResId) {
         this.imageResId = imageResId;
