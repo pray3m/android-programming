@@ -1,10 +1,14 @@
 package com.codewithprem;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
+
+import java.util.ArrayList;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -17,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String CONTACTS_COLUMN_EMAIL = "email";
     public static final String CONTACTS_COLUMN_CITY = "place";
 
-    public DBHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public DBHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -35,5 +39,30 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        db.execSQL("DROP TABLE IF EXISTS " + CONTACTS_TABLE_NAME);
+        onCreate(db);
     }
+
+    public void createContact(String name, String phone, String email, String place) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(CONTACTS_COLUMN_NAME, name);
+        values.put(CONTACTS_COLUMN_PHONE, phone);
+        values.put(CONTACTS_COLUMN_EMAIL, email);
+        values.put(CONTACTS_COLUMN_CITY, place);
+        db.insert(CONTACTS_TABLE_NAME, null, values);
+    }
+
+    public ArrayList<Contact> getContacts() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "SELECT * FROM " + CONTACTS_TABLE_NAME;
+
+
+        ArrayList<Contact> contacts = new ArrayList<>();
+
+
+        return contacts;
+    }
+
 }
