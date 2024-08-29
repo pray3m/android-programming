@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="Deprecated">
+
+    <!-- TextView positioned at (50, 50) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="50dp"
+        android:layout_y="50dp"
+        android:text="Username:" />
+
+    <!-- EditText positioned at (150, 50) -->
+    <EditText
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_x="150dp"
+        android:layout_y="50dp"
+        android:hint="Enter your username" />
+
+    <!-- Button positioned at (100, 150) -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="100dp"
+        android:layout_y="150dp"
+        android:text="Submit" />
+
+    <!-- Button positioned at (200, 150) -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="200dp"
+        android:layout_y="150dp"
+        android:text="Cancel" />
+</AbsoluteLayout>

@@ -33,5 +33,22 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        Button btnAbsolute = findViewById(R.id.btn_absolute);
+        btnAbsolute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AbsoluteLayoutActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        Button btnConstraint = findViewById(R.id.btn_constraint);
+        btnConstraint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ConstraintLayoutActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

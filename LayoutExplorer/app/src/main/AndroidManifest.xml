@@ -24,6 +24,8 @@
         <activity android:name=".LinearLayoutActivity" />
         <activity android:name=".RelativeLayoutActivity" />
         <activity android:name=".TableLayoutActivity" />
+        <activity android:name=".AbsoluteLayoutActivity"/>
+        <activity android:name=".ConstraintLayoutActivity"/>
     </application>
 
 </manifest>
