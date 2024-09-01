@@ -44,5 +44,17 @@ public class DbHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public void updateData(String id, String name, String address) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("name", name);
+        values.put("address", address);
+        db.update("contacts", values, "id = ?", new String[]{id});
+    }
+
+    public void deleteData(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("contacts", "id = ?", new String[]{id});
+    }
 
 }

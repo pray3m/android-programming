@@ -22,10 +22,14 @@ public class MainActivity extends AppCompatActivity {
 
         try (DbHelper dbHelper = new DbHelper(this)) {
 
-            Button btnInsert = findViewById(R.id.insert_button);
             EditText id = findViewById(R.id.edit_text_id);
             EditText name = findViewById(R.id.edit_text_name);
             EditText address = findViewById(R.id.edit_text_address);
+
+            Button btnInsert = findViewById(R.id.insert_button);
+            Button btnSelect = findViewById(R.id.select_button);
+            Button btnUpdate = findViewById(R.id.update_button);
+            Button btnDelete = findViewById(R.id.delete_button);
 
             RecyclerView recyclerView = findViewById(R.id.recycler_view);
 
@@ -41,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-
-            Button btnSelect = findViewById(R.id.select_button);
             btnSelect.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -62,6 +64,28 @@ public class MainActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(layoutManager);
                     ContactAdapter adapter = new ContactAdapter(MainActivity.this, contacts);
                     recyclerView.setAdapter(adapter);
+                }
+            });
+
+            btnUpdate.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String idText = id.getText().toString();
+                    String nameText = name.getText().toString();
+                    String addressText = address.getText().toString();
+
+                    dbHelper.updateData(idText, nameText, addressText);
+                    Toast.makeText(MainActivity.this, "updated succcessfully ✅", Toast.LENGTH_LONG).show();
+                }
+            });
+
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String idText = id.getText().toString();
+
+                    dbHelper.deleteData(idText);
+                    Toast.makeText(MainActivity.this, "Deleted succcessfully ✅", Toast.LENGTH_LONG).show();
                 }
             });
 
